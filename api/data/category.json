@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Thai",
+    "image": "thai-food.jpg"
+  },
+  {
+    "name": "Nigerian",
+    "image": "nigerian-food.jpg"
+  },
+  {
+    "name": "Chinese",
+    "image": "chinese-food.jpg"
+  },
+  {
+    "name": "Kenyan",
+    "image": "kenyan-food.jpg"
+  },
+  {
+    "name": "Ghanaian",
+    "image": "ghanaian-food.jpg"
+  },
+  {
+    "name": "Italian",
+    "image": "italian-food.jpg"
+  }
+]

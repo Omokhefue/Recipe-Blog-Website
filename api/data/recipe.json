@@ -1,0 +1,688 @@
+[
+  {
+    "title": "Seafood Linguine",
+    "ingredients": [
+      "300g dried linguine",
+      "250g squid, sliced into 1cm rings",
+      "250g mussels",
+      "250g cockles or clams",
+      "4 scallops, sliced",
+      "1 clove of garlic, finely sliced",
+      "1 bunch of fresh flat-leaf parsley (30g), finely chopped",
+      "Zest of ½ a lemon, finely grated",
+      "1 fresh red chilli, finely chopped (if using)",
+      "1 tablespoon of olive oil",
+      "1 tablespoon of baby capers",
+      "1 x 400g tin of plum tomatoes",
+      "1 handful of samphire (if using)",
+      "Juice of ½ a lemon",
+      "20g Parmesan, grated",
+      "Extra virgin olive oil, for finishing",
+      "Salt, to taste"
+    ],
+    "instructions": [
+      "Cook the dried linguine in a large pan of boiling salted water according to the packet instructions. Drain, reserving a mugful of starchy water.",
+      "Slice the squid into 1cm rings.",
+      "Sort through the mussels and cockles (or clams), discarding any that aren’t tightly closed.",
+      "Slice the scallops.",
+      "Peel and finely slice the garlic.",
+      "Pick and finely chop the fresh flat-leaf parsley.",
+      "Finely grate the zest of ½ a lemon.",
+      "Trim and finely chop the fresh red chilli (if using).",
+      "Place a large non-stick pan on medium-high heat with olive oil. Add the garlic, chilli, and baby capers. Cook for 1 minute.",
+      "Add the clams and mussels. Cook for a couple of minutes.",
+      "Add the squid, scallops, lemon zest, and parsley. Stir well.",
+      "Scrunch in the plum tomatoes by hand. Bring to a boil, then reduce the heat and simmer for 2 minutes, stirring regularly and breaking up the tomatoes.",
+      "Stir in the samphire (if using) and squeeze in the lemon juice. Simmer for 1 minute more, or until seafood is perfectly cooked.",
+      "Remove the pan from the heat. Carefully pick the meat out of the shells, if desired.",
+      "Grate in the Parmesan. Taste and season, adding extra lemon juice if needed.",
+      "Toss the cooked linguine into the sauce, loosening with a splash of reserved pasta water if needed.",
+      "Finish with a drizzle of extra virgin olive oil before serving."
+    ],
+    "email": "adejumot77@gmail.com",
+    "category": "Italian",
+    "image": "linguine.jpg"
+  },
+  {
+    "title": "Pasta Carbonara",
+    "ingredients": [
+      "200g spaghetti",
+      "100g guanciale, diced",
+      "2 large eggs",
+      "50g Pecorino Romano cheese, grated",
+      "Black pepper, to taste",
+      "Salt, to taste"
+    ],
+    "instructions": [
+      "Cook the spaghetti in a large pot of salted boiling water until al dente. Reserve some pasta water before draining.",
+      "In a pan, sauté the diced guanciale until crispy. Remove from heat and set aside.",
+      "In a bowl, whisk together the eggs, grated Pecorino Romano cheese, and black pepper.",
+      "Add the cooked pasta to the pan with guanciale. Toss to combine.",
+      "Remove the pan from heat and quickly pour in the egg mixture. Toss the pasta until the sauce thickens, adding reserved pasta water as needed.",
+      "Season with salt and serve immediately."
+    ],
+    "email": "example@example.com",
+    "category": "Italian",
+    "image": "pasta_carbonara.jpg"
+  },
+  {
+    "title": "Margherita Pizza",
+    "ingredients": [
+      "Pizza dough",
+      "Tomato sauce",
+      "Fresh mozzarella cheese, sliced",
+      "Fresh basil leaves",
+      "Olive oil",
+      "Salt and pepper, to taste"
+    ],
+    "instructions": [
+      "Preheat the oven to its highest temperature.",
+      "Roll out the pizza dough and transfer it to a baking sheet or pizza stone.",
+      "Spread tomato sauce evenly over the dough.",
+      "Arrange slices of fresh mozzarella on top of the sauce.",
+      "Bake in the preheated oven until the crust is golden and the cheese is melted and bubbly.",
+      "Remove from the oven and top with fresh basil leaves. Drizzle with olive oil and season with salt and pepper."
+    ],
+    "email": "example@example.com",
+    "category": "Italian",
+    "image": "margherita_pizza.jpg"
+  },
+  {
+    "title": "Tiramisu",
+    "ingredients": [
+      "Ladyfinger cookies",
+      "Espresso coffee, cooled",
+      "Mascarpone cheese",
+      "Eggs",
+      "Sugar",
+      "Cocoa powder"
+    ],
+    "instructions": [
+      "In a bowl, beat egg yolks and sugar until pale and creamy.",
+      "Add mascarpone cheese to the egg mixture and beat until smooth.",
+      "In a separate bowl, beat egg whites until stiff peaks form.",
+      "Gently fold the egg whites into the mascarpone mixture.",
+      "Dip ladyfinger cookies into cooled espresso and arrange a layer in a serving dish.",
+      "Spread a layer of the mascarpone mixture over the cookies.",
+      "Repeat layers until ingredients are used up, ending with a layer of mascarpone.",
+      "Dust the top with cocoa powder.",
+      "Refrigerate for several hours or overnight before serving."
+    ],
+    "email": "example@example.com",
+    "category": "Italian",
+    "image": "tiramisu.jpg"
+  },
+  {
+    "title": "Lasagna",
+    "ingredients": [
+      "Lasagna noodles",
+      "Ground beef",
+      "Onion, chopped",
+      "Garlic, minced",
+      "Tomato sauce",
+      "Ricotta cheese",
+      "Mozzarella cheese, shredded",
+      "Parmesan cheese, grated",
+      "Italian seasoning",
+      "Salt and pepper, to taste"
+    ],
+    "instructions": [
+      "Cook the lasagna noodles according to package instructions. Drain and set aside.",
+      "In a pan, cook the ground beef, onion, and garlic until the beef is browned. Drain excess fat.",
+      "Stir in the tomato sauce and Italian seasoning. Season with salt and pepper.",
+      "In a separate bowl, mix ricotta cheese and grated Parmesan.",
+      "Preheat the oven to a moderate temperature.",
+      "In a baking dish, layer lasagna noodles, meat sauce, ricotta mixture, and shredded mozzarella. Repeat layers.",
+      "Bake the lasagna in the preheated oven until bubbly and golden on top.",
+      "Let it rest for a few minutes before serving."
+    ],
+    "email": "example@example.com",
+    "category": "Italian",
+    "image": "lasagna.jpg"
+  },
+  {
+    "title": "Risotto Milanese",
+    "ingredients": [
+      "Arborio rice",
+      "Saffron threads",
+      "Chicken or vegetable broth",
+      "Onion, finely chopped",
+      "Dry white wine",
+      "Parmesan cheese, grated",
+      "Butter",
+      "Salt and pepper, to taste"
+    ],
+    "instructions": [
+      "In a small bowl, steep saffron threads in a bit of warm broth.",
+      "In a pan, sauté the chopped onion in butter until translucent.",
+      "Add Arborio rice to the pan and cook for a minute until rice is coated in butter.",
+      "Pour in the white wine and cook until mostly absorbed.",
+      "Gradually add the saffron-infused broth, stirring frequently and allowing the liquid to absorb before adding more.",
+      "Continue adding broth until the rice is creamy and cooked to your desired consistency.",
+      "Stir in grated Parmesan cheese and season with salt and pepper.",
+      "Remove from heat and let the risotto rest for a few minutes before serving."
+    ],
+    "email": "example@example.com",
+    "category": "Italian",
+    "image": "risotto_milanese.jpg"
+  },
+  {
+    "title": "Nigerian Jollof Rice",
+    "ingredients": [
+      "2 cups long-grain parboiled rice",
+      "2 cups tomato stew",
+      "1 cup chicken or vegetable broth",
+      "1 onion, chopped",
+      "2 red bell peppers, blended",
+      "2 tomatoes, blended",
+      "2 tablespoons tomato paste",
+      "1/4 cup vegetable oil",
+      "1 teaspoon thyme",
+      "1 teaspoon curry powder",
+      "1 teaspoon white pepper",
+      "1 teaspoon paprika",
+      "Salt, to taste"
+    ],
+    "instructions": [
+      "In a pot, heat vegetable oil and sauté chopped onions until translucent.",
+      "Add blended red bell peppers and tomatoes. Cook until the mixture thickens.",
+      "Stir in tomato paste, thyme, curry powder, white pepper, paprika, and salt.",
+      "Pour in the chicken or vegetable broth and bring to a simmer.",
+      "Add parboiled rice and stir to coat with the tomato stew.",
+      "Cover the pot and cook on low heat until the rice is cooked and has absorbed the flavors.",
+      "Fluff the rice with a fork and serve with your choice of protein."
+    ],
+    "email": "example@example.com",
+    "category": "Nigerian",
+    "image": "jollof_rice.jpg"
+  },
+  {
+    "title": "Chinese Orange Chicken",
+    "ingredients": [
+      "500g boneless chicken pieces, cut into bite-sized chunks",
+      "1 cup orange juice",
+      "Zest of 1 orange",
+      "1/4 cup soy sauce",
+      "2 tablespoons hoisin sauce",
+      "2 tablespoons rice vinegar",
+      "1 tablespoon brown sugar",
+      "1 tablespoon ginger, minced",
+      "2 cloves garlic, minced",
+      "2 tablespoons cornstarch",
+      "2 tablespoons water",
+      "Green onions, chopped (for garnish)",
+      "Sesame seeds (for garnish)",
+      "Oil, for frying",
+      "Salt and pepper, to taste"
+    ],
+    "instructions": [
+      "In a bowl, whisk together orange juice, orange zest, soy sauce, hoisin sauce, rice vinegar, brown sugar, minced ginger, and minced garlic.",
+      "Marinate the chicken pieces in half of the sauce for at least 30 minutes.",
+      "In a separate bowl, mix cornstarch and water to create a slurry.",
+      "Heat oil in a pan for frying. Coat marinated chicken in cornstarch slurry and fry until golden and crispy.",
+      "In another pan, heat the remaining sauce until it thickens.",
+      "Toss fried chicken in the thickened sauce until coated.",
+      "Serve the orange chicken over rice and garnish with chopped green onions and sesame seeds."
+    ],
+    "email": "example@example.com",
+    "category": "Chinese",
+    "image": "orange_chicken.jpg"
+  },
+  {
+    "title": "Kenyan Ugali and Sukuma Wiki",
+    "ingredients": [
+      "2 cups maize flour",
+      "4 cups water",
+      "1 bunch sukuma wiki (collard greens), chopped",
+      "1 onion, chopped",
+      "2 tomatoes, chopped",
+      "2 tablespoons vegetable oil",
+      "1 teaspoon garlic, minced",
+      "Salt, to taste"
+    ],
+    "instructions": [
+      "In a pot, bring water to a boil.",
+      "Slowly add maize flour while stirring continuously to prevent lumps. Keep stirring until the mixture thickens.",
+      "Cover the pot and let the ugali cook for a few more minutes.",
+      "In a separate pan, heat vegetable oil and sauté chopped onions and minced garlic until fragrant.",
+      "Add chopped tomatoes and cook until they soften.",
+      "Stir in chopped sukuma wiki and cook until wilted.",
+      "Season with salt and serve the sukuma wiki alongside the ugali."
+    ],
+    "email": "example@example.com",
+    "category": "Kenyan",
+    "image": "ugali_sukuma_wiki.jpg"
+  },
+  {
+    "title": "Ghanaian Kelewele",
+    "ingredients": [
+      "4 ripe plantains, peeled and cut into chunks",
+      "1 tablespoon ginger, minced",
+      "1 teaspoon cayenne pepper",
+      "1 teaspoon ground coriander",
+      "1 teaspoon ground cloves",
+      "1 teaspoon ground nutmeg",
+      "Salt, to taste",
+      "Oil, for frying"
+    ],
+    "instructions": [
+      "In a bowl, mix minced ginger, cayenne pepper, ground coriander, ground cloves, ground nutmeg, and salt to create a spice mix.",
+      "Toss the plantain chunks in the spice mix until coated.",
+      "Heat oil in a pan for frying.",
+      "Fry the spiced plantains until they are golden and crispy.",
+      "Remove from the oil and drain on paper towels.",
+      "Serve the kelewele as a spicy and flavorful snack."
+    ],
+    "email": "example@example.com",
+    "category": "Ghanaian",
+    "image": "kelewele.jpg"
+  },
+  {
+    "title": "Nigerian Pounded Yam and Egusi Soup",
+    "ingredients": [
+      "2 cups pounded yam flour",
+      "4 cups water",
+      "1 cup egusi seeds",
+      "Assorted meat and fish (e.g., goat meat, beef, fish)",
+      "Palm oil",
+      "Vegetables (e.g., spinach, ugu)",
+      "Onion, chopped",
+      "Ground crayfish",
+      "Ground pepper",
+      "Stock cubes",
+      "Salt, to taste"
+    ],
+    "instructions": [
+      "Prepare the pounded yam by gradually adding yam flour to boiling water, stirring vigorously to achieve a smooth consistency.",
+      "In a pot, heat palm oil and sauté chopped onions.",
+      "Add egusi seeds and stir until they are well coated.",
+      "Add assorted meat and fish. Cook until they are tender.",
+      "Stir in ground crayfish, ground pepper, and stock cubes.",
+      "Add water to achieve desired soup consistency.",
+      "Add vegetables and cook until they wilt.",
+      "Season with salt and serve the egusi soup with pounded yam."
+    ],
+    "email": "example@example.com",
+    "category": "Nigerian",
+    "image": "egusi_soup.jpg"
+  },
+  {
+    "title": "Chinese Kung Pao Chicken",
+    "ingredients": [
+      "500g boneless chicken, diced",
+      "1/2 cup roasted peanuts",
+      "1/2 cup bell peppers, diced",
+      "1/2 cup dried red chilies",
+      "3 cloves garlic, minced",
+      "2 tablespoons soy sauce",
+      "2 tablespoons hoisin sauce",
+      "1 tablespoon Chinese black vinegar",
+      "1 tablespoon cornstarch",
+      "1 teaspoon sugar",
+      "1 teaspoon Sichuan peppercorns",
+      "Oil, for cooking",
+      "Salt, to taste"
+    ],
+    "instructions": [
+      "In a bowl, mix soy sauce, hoisin sauce, Chinese black vinegar, cornstarch, and sugar to create a marinade.",
+      "Marinate the diced chicken in the sauce for about 20 minutes.",
+      "Heat oil in a pan and fry dried red chilies until they turn dark.",
+      "Remove the chilies from the oil and set them aside.",
+      "In the same pan, stir-fry the marinated chicken until cooked.",
+      "Add diced bell peppers, minced garlic, and Sichuan peppercorns. Stir-fry briefly.",
+      "Add roasted peanuts and the fried dried red chilies.",
+      "Season with salt and serve the Kung Pao chicken over rice."
+    ],
+    "email": "example@example.com",
+    "category": "Chinese",
+    "image": "kung_pao_chicken.jpg"
+  },
+  {
+    "title": "Kenyan Nyama Choma",
+    "ingredients": [
+      "1 kg beef or goat meat, cut into chunks",
+      "1 tablespoon ginger-garlic paste",
+      "1 tablespoon paprika",
+      "1 tablespoon cayenne pepper",
+      "1 tablespoon ground coriander",
+      "Salt and pepper, to taste",
+      "Lemon juice",
+      "Vegetable oil, for grilling"
+    ],
+    "instructions": [
+      "In a bowl, mix ginger-garlic paste, paprika, cayenne pepper, ground coriander, salt, pepper, and lemon juice to create a marinade.",
+      "Coat the meat chunks with the marinade and let them marinate for a few hours or overnight.",
+      "Preheat a grill or barbecue to medium-high heat.",
+      "Thread the marinated meat onto skewers and brush with vegetable oil.",
+      "Grill the meat on the barbecue, turning occasionally, until it's cooked and has a nice char.",
+      "Serve the nyama choma with a side of kachumbari (Kenyan salsa) and ugali."
+    ],
+    "email": "example@example.com",
+    "category": "Kenyan",
+    "image": "nyama_choma.jpg"
+  },
+  {
+    "title": "Ghanaian Fufu and Light Soup",
+    "ingredients": [
+      "2 cups fufu (cassava and plantain dough)",
+      "Assorted meat and fish (e.g., goat meat, tilapia)",
+      "2 tomatoes, blended",
+      "1 onion, chopped",
+      "2 cloves garlic, minced",
+      "2 teaspoons ground ginger",
+      "2 teaspoons ground pepper",
+      "Palm nut cream (or palm nut soup base)",
+      "Water",
+      "Palm oil",
+      "Seasoning cubes",
+      "Salt, to taste"
+    ],
+    "instructions": [
+      "Boil assorted meat and fish until tender. Set aside.",
+      "In a pot, sauté chopped onions and minced garlic in palm oil.",
+      "Add blended tomatoes, ground ginger, and ground pepper. Cook until the oil separates.",
+      "Add palm nut cream and some water to create a soup base.",
+      "Season with seasoning cubes and salt.",
+      "Add boiled meat and fish to the soup.",
+      "Simmer the soup for a few minutes to allow flavors to meld.",
+      "Serve the light soup with fufu."
+    ],
+    "email": "example@example.com",
+    "category": "Ghanaian",
+    "image": "fufu_light_soup.jpg"
+  },
+  {
+    "title": "Tom Yum Soup",
+    "instructions": [
+      "Boil 4 cups of water in a pot.",
+      "Add lemongrass, galangal, and lime leaves.",
+      "Stir in shrimp and chili paste.",
+      "Simmer for 5 minutes and serve hot."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 cup shrimp",
+      "2 stalks lemongrass",
+      "3 slices galangal",
+      "4 lime leaves",
+      "1 teaspoon chili paste"
+    ],
+    "category": "Thai",
+    "image": "tom-yum-soup.jpg"
+  },
+  {
+    "title": "Kung Pao Chicken",
+    "instructions": [
+      "Marinate chicken with soy sauce and cornstarch.",
+      "Heat oil in a pan and sauté garlic and ginger.",
+      "Add chicken, peanuts, and bell peppers.",
+      "Stir-fry until cooked, and garnish with green onions."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 cup chicken breast, diced",
+      "1/4 cup peanuts",
+      "1/2 cup bell peppers, sliced",
+      "2 cloves garlic, minced",
+      "1 teaspoon fresh ginger, minced"
+    ],
+    "category": "Chinese",
+    "image": "kung-pao-chicken.jpg"
+  },
+  {
+    "title": "Nyama Choma",
+    "instructions": [
+      "Marinate beef with salt and spices.",
+      "Grill over an open flame until charred.",
+      "Squeeze lemon juice over the meat and serve."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 pound beef chunks",
+      "1 teaspoon salt",
+      "1 tablespoon spice blend",
+      "1 lemon, sliced"
+    ],
+    "category": "Kenyan",
+    "image": "nyama-choma.jpg"
+  },
+  {
+    "title": "Margherita Pizza",
+    "instructions": [
+      "Preheat the oven to 450°F (230°C).",
+      "Roll out pizza dough and spread tomato sauce.",
+      "Top with mozzarella cheese and fresh basil leaves.",
+      "Bake for 12-15 minutes until the crust is golden."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 pizza dough",
+      "1/2 cup tomato sauce",
+      "1 cup mozzarella cheese",
+      "Fresh basil leaves"
+    ],
+    "category": "Italian",
+    "image": "margherita-pizza.jpg"
+  },
+  {
+    "title": "Jollof Rice",
+    "instructions": [
+      "Wash rice thoroughly and set aside.",
+      "Prepare tomato stew by blending tomatoes and peppers.",
+      "Fry onions in oil, add tomato stew and spices.",
+      "Combine rice and tomato stew, cook until rice is tender."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "2 cups rice",
+      "4 tomatoes",
+      "2 red bell peppers",
+      "1 onion, chopped",
+      "Spices"
+    ],
+    "category": "Nigerian",
+    "image": "jollof-rice.jpg"
+  },
+  {
+    "title": "Banku and Tilapia",
+    "instructions": [
+      "Prepare banku by mixing corn flour and water.",
+      "Season tilapia with spices and grill until cooked.",
+      "Serve banku and tilapia with tomato sauce."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "2 cups corn flour",
+      "1 whole tilapia",
+      "Spices",
+      "Tomato sauce"
+    ],
+    "category": "Ghanaian",
+    "image": "banku-tilapia.jpg"
+  },
+  {
+    "title": "Green Curry",
+    "instructions": [
+      "Prepare green curry paste with spices.",
+      "Cook chicken and vegetables in coconut milk.",
+      "Simmer until flavors meld and serve with rice."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 cup chicken, cubed",
+      "1 cup mixed vegetables",
+      "2 tablespoons green curry paste",
+      "1 can coconut milk",
+      "Rice"
+    ],
+    "category": "Thai",
+    "image": "green-curry.jpg"
+  },
+  {
+    "title": "Sweet and Sour Pork",
+    "instructions": [
+      "Marinate pork with soy sauce and ginger.",
+      "Fry pork until golden and set aside.",
+      "Stir-fry vegetables, add sweet and sour sauce, and combine with pork."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 cup pork, sliced",
+      "1 cup bell peppers, diced",
+      "1/2 cup pineapple chunks",
+      "1/4 cup sweet and sour sauce",
+      "Rice"
+    ],
+    "category": "Chinese",
+    "image": "sweet-sour-pork.jpg"
+  },
+  {
+    "title": "Ugali and Sukuma Wiki",
+    "instructions": [
+      "Boil water and add cornmeal, stirring until thickened.",
+      "Sauté kale with onions and tomatoes.",
+      "Serve ugali and sukuma wiki together."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "2 cups cornmeal",
+      "1 bunch kale",
+      "1 onion, chopped",
+      "2 tomatoes, diced"
+    ],
+    "category": "Kenyan",
+    "image": "ugali-sukuma-wiki.jpg"
+  },
+  {
+    "title": "Risotto al Funghi",
+    "instructions": [
+      "Sauté onions and mushrooms in butter.",
+      "Add Arborio rice and white wine.",
+      "Gradually add broth, stirring until creamy.",
+      "Finish with parmesan and serve."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 cup Arborio rice",
+      "1 cup mushrooms, sliced",
+      "1 onion, chopped",
+      "1/2 cup white wine",
+      "Parmesan cheese"
+    ],
+    "category": "Italian",
+    "image": "risotto-funghi.jpg"
+  },
+  {
+    "title": "Efo Riro",
+    "instructions": [
+      "Sauté onions and peppers in palm oil.",
+      "Add spinach and tomato stew, simmer until cooked.",
+      "Serve efo riro with rice or fufu."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "2 cups spinach",
+      "1 cup tomato stew",
+      "1 onion, chopped",
+      "1 red bell pepper, diced",
+      "Palm oil",
+      "Rice or fufu"
+    ],
+    "category": "Nigerian",
+    "image": "efo-riro.jpg"
+  },
+  {
+    "title": "Red Red",
+    "instructions": [
+      "Boil black-eyed peas until tender.",
+      "Sauté plantains and peppers in palm oil.",
+      "Combine peas, plantains, and tomato stew.",
+      "Serve red red with fried plantains."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 cup black-eyed peas",
+      "2 ripe plantains",
+      "1 cup tomato stew",
+      "1 onion, chopped",
+      "Palm oil"
+    ],
+    "category": "Ghanaian",
+    "image": "red-red.jpg"
+  },
+  {
+    "title": "Massaman Curry",
+    "instructions": [
+      "Simmer beef in coconut milk until tender.",
+      "Add massaman curry paste and potatoes.",
+      "Stir in peanuts and tamarind paste.",
+      "Serve with rice and garnish with cilantro."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "1 pound beef, cubed",
+      "2 potatoes, diced",
+      "1/4 cup peanuts",
+      "2 tablespoons massaman curry paste",
+      "1 tablespoon tamarind paste",
+      "Cilantro leaves",
+      "Rice"
+    ],
+    "category": "Thai",
+    "image": "massaman-curry.jpg"
+  },
+  {
+    "title": "Dim Sum",
+    "instructions": [
+      "Prepare various dim sum fillings.",
+      "Assemble and steam dumplings until cooked.",
+      "Serve with dipping sauces."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "Ground pork",
+      "Shrimp",
+      "Chives",
+      "Wonton wrappers",
+      "Dipping sauces"
+    ],
+    "category": "Chinese",
+    "image": "dim-sum.jpg"
+  },
+  {
+    "title": "Pilau Rice",
+    "instructions": [
+      "Sauté onions and spices until fragrant.",
+      "Add rice and cook with broth and tomatoes.",
+      "Simmer until rice is fluffy and serve."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "2 cups rice",
+      "1 onion, chopped",
+      "1 teaspoon pilau spice blend",
+      "2 tomatoes, diced",
+      "Chicken or vegetable broth"
+    ],
+    "category": "Kenyan",
+    "image": "pilau-rice.jpg"
+  },
+  {
+    "title": "Pounded Yam and Egusi Soup",
+    "instructions": [
+      "Pound yam until smooth and stretchy.",
+      "Prepare egusi soup by combining ingredients.",
+      "Serve pounded yam with egusi soup."
+    ],
+    "email": "chef@example.com",
+    "ingredients": [
+      "Yam",
+      "Egusi seeds",
+      "Leafy vegetables",
+      "Palm oil",
+      "Seasonings"
+    ],
+    "category": "Nigerian",
+    "image": "pounded-yam-egusi.jpg"
+  }
+]
