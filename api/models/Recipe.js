@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { isEmail } = require("validator");
 const RecipeSchema = new mongoose.Schema(
   {
     title: {
@@ -11,6 +12,7 @@ const RecipeSchema = new mongoose.Schema(
     },
     email: {
       type: String,
+      validate: [isEmail, "please enter a valid email"],
       required: [true, "an email is required"],
     },
     ingredients: {
@@ -19,18 +21,24 @@ const RecipeSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ["Thai", "Chinese", "Kenyan", "Italian", "Nigerian", "Ghanaian"],
-      required: [true, "please pick a category "],
-    },
-    image: {
-      type: String,
-      required: [true, "no image was uploaded"],
+      enum: {
+        values: [
+          "Thai",
+          "Chinese",
+          "Kenyan",
+          "Italian",
+          "Nigerian",
+          "Ghanaian",
+        ],
+        message: "Please pick a valid category.",
+      },
+      required: true,
     },
   },
   { timestamps: true }
 );
 
-// when the search fetaure is invoked, it will look for the serch value in any of these fields
+// when the search fetaure is invoked, it will look for the search value in any of these fields
 RecipeSchema.index({
   title: "text",
   instructions: "text",

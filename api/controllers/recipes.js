@@ -44,7 +44,7 @@ exports.getRandomRecipe = asyncHandler(async (req, res) => {
 //  POST api/vi/recipes/add-recipe
 // ADD A recipe
 // PUBLIC
-exports.postRecipe = asyncHandler(async (req, res) => {
+exports.postRecipe = asyncHandler(async (req, res, next) => {
   let sanitizedImageName;
   const {
     title,
@@ -54,6 +54,9 @@ exports.postRecipe = asyncHandler(async (req, res) => {
     category,
   } = req.body;
 
+  if (!req.files || Object.keys(req.files).length === 0) {
+    throw new ErrorResponse("no image uploaded", 400);
+  }
   let imageFile = req.files.image;
 
   const fileExtension = imageFile.name.split(".").pop(); // getting the image extension
@@ -61,9 +64,11 @@ exports.postRecipe = asyncHandler(async (req, res) => {
 
   // checking if uploaded image file was of the correct format
   if (!allowedExtensions.includes(fileExtension)) {
-    throw new ErrorResponse(
-      "Invalid file type. Please upload a valid image file (.jpg, .jpeg, .png, .gif).",
-      422
+    next(
+      new ErrorResponse(
+        "Invalid file type. Please upload a valid image file (.jpg, .jpeg, .png, .gif).",
+        422
+      )
     );
   } else {
     // generate a unique file name by adding the date beforehand
@@ -75,7 +80,7 @@ exports.postRecipe = asyncHandler(async (req, res) => {
   // move image file to to the public/images folder
   await imageFile.mv(uploadPath);
 
-  await Recipe.create({
+  const recipe = await Recipe.create({
     title,
     email,
     instructions,
@@ -83,4 +88,5 @@ exports.postRecipe = asyncHandler(async (req, res) => {
     category,
     image: sanitizedImageName,
   });
+  res.status(201).json({ recipe });
 });

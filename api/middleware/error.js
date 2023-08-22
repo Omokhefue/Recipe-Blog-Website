@@ -4,6 +4,7 @@ const errorHandler = (err, req, res, next) => {
   // validation error
   if (err.name === "ValidationError") {
     const message = Object.values(err.errors).map((err) => err.message);
+
     error = new ErrorResponse(message, 404);
   }
   // duplicate field entry
@@ -14,7 +15,9 @@ const errorHandler = (err, req, res, next) => {
   if (err.name === "CastError") {
     error = new ErrorResponse("that id is not valid", 404);
   }
-  console.log(error);
+  if (err.message === "no image uploaded") {
+    error = new ErrorResponse("No image was uploaded", 400);
+  }
 
   res
     .status(error.statusCode || 500)
