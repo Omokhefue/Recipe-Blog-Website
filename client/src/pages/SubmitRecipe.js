@@ -63,7 +63,7 @@ const SubmitRecipe = () => {
         setIsPending(false);
         setError(data.error);
       }
-      console.log(data)
+      console.log(data);
       if (data.recipe) history.push("/api/recipes");
       setIsPending(false);
     } catch (error) {
@@ -76,35 +76,41 @@ const SubmitRecipe = () => {
   };
   return (
     <section className="p-4">
-      <h1 className="text-3xl font-bold mb-4">
+      <h1 className="text-3xl font-bold text-green-700 mb-4">
         Publish your recipe for FREE today
       </h1>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        {/* Recipe Title */}
         <div className="mb-4" onChange={handleChange}>
-          <label className="block font-semibold mb-1">Recipe Title</label>
+          <label className="block font-semibold mb-1 text-green-700">
+            Recipe Title
+          </label>
           <input
             type="text"
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full border border-green-300 rounded py-2 px-3 focus:outline-none focus:border-green-500"
+            placeholder="Enter Recipe Title"
           />
         </div>
 
-        {/* Email */}
         <div className="mb-4" onChange={handleChange}>
-          <label className="block font-semibold mb-1">Email</label>
+          <label className="block font-semibold mb-1 text-green-700">
+            Email
+          </label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full border border-green-300 rounded py-2 px-3 focus:outline-none focus:border-green-500"
+            placeholder="Enter Your Email"
           />
         </div>
 
-        {/* Ingredients */}
         <div className="mb-4" onChange={handleChange}>
+          <label className="block font-semibold mb-1 text-green-700">
+            Ingredients
+          </label>
           {ingredientsArray.map((ingredient, index) => (
             <input
               key={index}
@@ -113,19 +119,23 @@ const SubmitRecipe = () => {
               onChange={(e) =>
                 handleInputChange("ingredients", index, e.target.value)
               }
-              className="w-full border border-gray-300 rounded py-2 px-3 mb-2 focus:outline-none focus:border-blue-500"
+              className="w-full border border-green-300 rounded py-2 px-3 mb-2 focus:outline-none focus:border-green-500"
+              placeholder={`Ingredient ${index + 1}`}
             />
           ))}
           <button
             type="button"
             onClick={() => handleAddInput("ingredients")}
-            className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded focus:outline-none focus:ring-2 focus:ring-green-300"
           >
             Add Ingredient
           </button>
         </div>
-        {/* Instructions */}
+
         <div className="mb-4" onChange={handleChange}>
+          <label className="block font-semibold mb-1 text-green-700">
+            Instructions
+          </label>
           {instructionsArray.map((instruction, index) => (
             <input
               key={index}
@@ -134,37 +144,40 @@ const SubmitRecipe = () => {
               onChange={(e) =>
                 handleInputChange("instructions", index, e.target.value)
               }
-              className="w-full border border-gray-300 rounded py-2 px-3 mb-2 focus:outline-none focus:border-blue-500"
+              className="w-full border border-green-300 rounded py-2 px-3 mb-2 focus:outline-none focus:border-green-500"
+              placeholder={`Step ${index + 1}`}
             />
           ))}
           <button
             type="button"
             onClick={() => handleAddInput("instructions")}
-            className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded focus:outline-none focus:ring-2 focus:ring-green-300"
           >
             Add Instruction
           </button>
         </div>
 
-        {/* Image */}
         <div className="mb-4" onChange={handleChange}>
-          <label className="block font-semibold mb-1">Image</label>
+          <label className="block font-semibold mb-1 text-green-700">
+            Image
+          </label>
           <input
             type="file"
             name="image"
             accept="image/*"
             onChange={(e) => setImage(e.target.files[0])}
-            className="focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="focus:outline-none focus:ring-2 focus:ring-green-500"
           />
         </div>
 
-        {/* Category */}
         <div className="mb-4" onChange={handleChange}>
-          <label className="block font-semibold mb-1">Category</label>
+          <label className="block font-semibold mb-1 text-green-700">
+            Category
+          </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full border border-green-300 rounded py-2 px-3 focus:outline-none focus:border-green-500"
           >
             <option value="default-value">Select Category</option>
             <option value="Nigerian">Nigerian</option>
@@ -176,8 +189,7 @@ const SubmitRecipe = () => {
           </select>
         </div>
 
-        {/* Submit Button */}
-        <div className="mb-4">
+        <div className="mb-4" onChange={handleChange}>
           <button
             type="submit"
             className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-green-300"

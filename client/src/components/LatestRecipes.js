@@ -4,8 +4,8 @@ import useFetch from "../hooks/useFetch";
 const LatestRecipes = ({ url }) => {
   const { error, isPending, data: recipes } = useFetch(url);
   return (
-    <section className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Latest Recipes</h2>
+    <section className="p-4 bg-green-100">
+      <h2 className="text-2xl font-bold mb-4 text-green-800">Latest Recipes</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {recipes &&
@@ -21,7 +21,7 @@ const LatestRecipes = ({ url }) => {
                 className="w-full h-40 object-cover"
               />
               <div className="p-4">
-                <p className="text-gray-700">{`${recipe.title}`}</p>
+                <p className="text-gray-800">{`${recipe.title}`}</p>
               </div>
             </Link>
           ))}
