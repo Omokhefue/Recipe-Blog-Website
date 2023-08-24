@@ -9,7 +9,7 @@ const cors = require("cors");
 // Route files
 const recipes = require("./routes/recipes");
 const categories = require("./routes/category");
-// const users = require("./routes/users");
+const users = require("./routes/users");
 // const auth = require("./routes/auth");
 const errorHandler = require("./middleware/error");
 const app = express();
@@ -23,7 +23,7 @@ app.use(express.static("public"));
 
 app.use("/api/v1/recipes", recipes);
 app.use("/api/v1/categories", categories);
-// app.use("/api/v1/users", users);
+app.use("/api/v1/users", users);
 // app.use("/api/v1/auth", auth);
 
 app.use(errorHandler);

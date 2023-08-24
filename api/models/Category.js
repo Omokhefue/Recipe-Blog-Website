@@ -3,7 +3,7 @@ const CategorySchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "name of Category is srequired"],
+      required: [true, "name of Category is required"],
       unique: true,
     },
     image: {

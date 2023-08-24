@@ -23,11 +23,19 @@ exports.getAllCategories = asyncHandler(async (req, res) => {
 // SINGLE CATEGORY
 // PUBLIC
 exports.getRecipesByCategory = asyncHandler(async (req, res) => {
-  const categoryName = req.params.category;
-  const limit = 20;
+  const id = req.params.id;
+  // const limit = 20;
   // displaying recipes categorized by category i.e country
-  const recipeByCategory = await Recipe.find({ category: categoryName }).limit(
-    limit
-  );
+  const recipeByCategory = await Category.findById(id).populate("recipes");
+  console.log(recipeByCategory);
   res.status(200).json(recipeByCategory);
 });
+// exports.getRecipesByCategory = asyncHandler(async (req, res) => {
+//   const categoryName = req.params.category;
+//   const limit = 20;
+//   // displaying recipes categorized by category i.e country
+//   const recipeByCategory = await Recipe.find({ category: categoryName }).limit(
+//     limit
+//   );
+//   res.status(200).json(recipeByCategory);
+// });

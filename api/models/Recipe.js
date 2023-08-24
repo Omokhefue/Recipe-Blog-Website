@@ -32,6 +32,14 @@ const RecipeSchema = new mongoose.Schema(
         ],
         message: "Please pick a valid category.",
       },
+      comments: {
+        ref: "Comment",
+        type: [mongoose.Schema.Types.ObjectId],
+      },
+      likes: {
+        ref: "Likes",
+        type: [mongoose.Schema.Types.ObjectId],
+      },
       required: true,
     },
   },
