@@ -1,8 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import SubmitRecipe from "./pages/SubmitRecipe";
+import EditRecipe from "./pages/EditRecipe";
 import DisplayRandom from "./pages/DisplayRandomRecipe";
 import SingleCategory from "./pages/SingleCategory";
 import Categories from "./pages/Categories";
@@ -29,7 +35,7 @@ function App() {
             <Route path="/api/recipes/random-recipe">
               <DisplayRandom />
             </Route>
-            <Route path="/api/recipes/categories/:category">
+            <Route path="/api/recipes/categories/:id">
               <SingleCategory />
             </Route>
             <Route path="/api/recipes/categories">
@@ -37,6 +43,9 @@ function App() {
             </Route>
             <Route path="/api/recipes/submit-recipe">
               <SubmitRecipe />
+            </Route>
+            <Route path="/api/recipes/edit-recipe">
+              <editRecipe />
             </Route>
             <Route path="/api/recipes/search">
               <SearchResultsPage />

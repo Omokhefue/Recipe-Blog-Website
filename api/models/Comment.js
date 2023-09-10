@@ -12,16 +12,20 @@ const CommentSchema = new mongoose.Schema(
       required: true,
     },
     recipe: {
-      ref: "Recipe",
       type: mongoose.Schema.Types.ObjectId,
+      ref: "Recipe",
       required: true,
     },
-    likes: {
-      ref: "Likes",
-      type: mongoose.Schema.Types.ObjectId,
-    },
+    likes: [
+      {
+        ref: "Likes",
+        type: mongoose.Schema.Types.ObjectId,
+      },
+    ],
+    likesCount: Number,
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Comment", CommentSchema);
+module.exports =
+  mongoose.models.comments || mongoose.model("Comment", CommentSchema);

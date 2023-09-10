@@ -6,16 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faUser } from "@fortawesome/free-solid-svg-icons";
 
 const SingleCategory = () => {
-  const { category } = useParams();
+  const { id } = useParams();
   const {
     error,
     isPending,
     data: RecipesByCategory,
-  } = useFetch("http://localhost:5000/api/v1/categories/" + category);
+  } = useFetch("http://localhost:5000/api/v1/categories/" + id);
   return (
     <section className="p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {RecipesByCategory &&
+        {Array.isArray(RecipesByCategory) &&
           RecipesByCategory.map((recipe) => (
             <Link
               to={`/api/recipes/${recipe._id}`}

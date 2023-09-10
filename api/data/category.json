@@ -1,26 +1,32 @@
 [
   {
     "name": "Thai",
-    "image": "thai-food.jpg"
+    "image": "thai-food.jpg",
+    "_id":"64e76e10790b1b6c5c13278b"
   },
   {
     "name": "Nigerian",
-    "image": "nigerian-food.jpg"
+    "image": "nigerian-food.jpg",
+    "_id": "64e76e10790b1b6c5c13278c"
   },
   {
     "name": "Chinese",
-    "image": "chinese-food.jpg"
+    "image": "chinese-food.jpg",
+    "_id": "64e76e10790b1b6c5c13278d"
   },
   {
     "name": "Kenyan",
-    "image": "kenyan-food.jpg"
+    "image": "kenyan-food.jpg",
+    "_id": "64e76e10790b1b6c5c13278e"
   },
   {
     "name": "Ghanaian",
-    "image": "ghanaian-food.jpg"
+    "image": "ghanaian-food.jpg",
+    "_id": "64e76e10790b1b6c5c13278f"
   },
   {
     "name": "Italian",
-    "image": "italian-food.jpg"
+    "image": "italian-food.jpg",
+    "_id": "64e76e10790b1b6c5c132790"
   }
 ]

@@ -1,6 +1,5 @@
 const asyncHandler = require("../middleware/async");
 const Category = require("../models/Category");
-const Recipe = require("../models/Recipe");
 
 // GET /api/categories/
 // LIST OF CATEGORIES FOR DISPLAY ON HOMEPAGE
@@ -24,11 +23,15 @@ exports.getAllCategories = asyncHandler(async (req, res) => {
 // PUBLIC
 exports.getRecipesByCategory = asyncHandler(async (req, res) => {
   const id = req.params.id;
-  // const limit = 20;
-  // displaying recipes categorized by category i.e country
-  const recipeByCategory = await Category.findById(id).populate("recipes");
-  console.log(recipeByCategory);
-  res.status(200).json(recipeByCategory);
+
+  const recipeByCategory = await Category.findById(id)
+    .populate("recipes")
+    .exec();
+
+  const recipes = recipeByCategory.recipes;
+
+  // Send the 'recipes' array as the response
+  res.status(200).json({ recipes: recipes });
 });
 // exports.getRecipesByCategory = asyncHandler(async (req, res) => {
 //   const categoryName = req.params.category;

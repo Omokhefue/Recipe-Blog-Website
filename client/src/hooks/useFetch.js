@@ -5,7 +5,6 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
       const fetchData = async () => {
         try {
           const response = await fetch(url);
@@ -22,7 +21,6 @@ const useFetch = (url) => {
         }
       };
       fetchData();
-    }, 1000);
   }, [url]);
 
   return { error, isPending, data };

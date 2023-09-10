@@ -9,7 +9,7 @@ const Category = ({ url }) => {
         {categories &&
           categories.map((category) => (
             <Link
-              to={`/api/recipes/categories/${category.name}`}
+              to={`/api/recipes/categories/${category._id}`}
               key={category._id}
               className="flex flex-col items-center text-center border p-2 rounded-lg hover:border-gray-300 transition duration-300"
             >

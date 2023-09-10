@@ -2,20 +2,23 @@ const mongoose = require("mongoose");
 
 const LikesSchema = new mongoose.Schema(
   {
-    likes: {
-      ref: "Likes",
-      type: Number,
-      defualt: 0,
-      min: 0,
-      max: 1,
+    like: {
+      type: Boolean,
+      enum: [true],
     },
     author: {
       ref: "User",
       type: mongoose.Schema.Types.ObjectId,
     },
-    recipe: {
-      ref: "Recipe",
+    parent: {
       type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      refPath: "parentType",
+    },
+    parentType: {
+      type: String,
+      required: true,
+      enum: ["Recipe", "Comment"],
     },
   },
   { timestamps: true }

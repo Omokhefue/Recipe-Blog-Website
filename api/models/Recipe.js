@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
+const Comment = require("../models/Comment");
+const Likes = require("../models/Likes");
+const ErrorResponse = require("../utils/errorResponse");
+
 const RecipeSchema = new mongoose.Schema(
   {
     title: {
@@ -13,35 +17,26 @@ const RecipeSchema = new mongoose.Schema(
     email: {
       type: String,
       validate: [isEmail, "please enter a valid email"],
-      required: [true, "an email is required"],
     },
     ingredients: {
       type: Array,
       required: [true, "please add at least one ingredient for the recipe"],
     },
-    category: {
-      type: String,
-      enum: {
-        values: [
-          "Thai",
-          "Chinese",
-          "Kenyan",
-          "Italian",
-          "Nigerian",
-          "Ghanaian",
-        ],
-        message: "Please pick a valid category.",
-      },
-      comments: {
-        ref: "Comment",
-        type: [mongoose.Schema.Types.ObjectId],
-      },
-      likes: {
-        ref: "Likes",
-        type: [mongoose.Schema.Types.ObjectId],
-      },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // Reference to the User model
       required: true,
     },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category", // Reference to the Category model
+      required: true,
+    },
+    likesCount: Number,
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   },
   { timestamps: true }
 );
@@ -54,5 +49,21 @@ RecipeSchema.index({
   category: "text",
 });
 
-module.exports =
-  mongoose.models.Recipe || mongoose.model("Recipe", RecipeSchema);
+RecipeSchema.virtual("comments", {
+  ref: "Comment", // Reference to the Comment model
+  localField: "_id", // The field in the Recipe model that contains the reference
+  foreignField: "recipe", // The field in the Likes model to match against
+});
+RecipeSchema.virtual("likes", {
+  ref: "Likes", // Reference to the Likes model
+  localField: "_id", // The field in the Recipe model that contains the reference
+  foreignField: "parent", // The field in the Likes model to match against
+});
+
+RecipeSchema.pre("deleteOne", async function (next) {
+  const recipeId = this.getQuery()["_id"];
+  await mongoose.model("Comment").deleteMany({ recipe: recipeId });
+  await mongoose.model("Likes").deleteMany({ recipe: recipeId });
+  next();
+});
+module.exports = mongoose.model("Recipe", RecipeSchema);

@@ -4,12 +4,8 @@ import DisplayRecipeDetails from "../components/DisplayRecipeDetails";
 
 const SingleRecipeDetails = () => {
   const { id } = useParams();
-  const {
-    error,
-    isPending,
-    data: recipe,
-  } = useFetch("http://localhost:5000/api/v1/recipes/" + id);
-  return <DisplayRecipeDetails recipe={recipe} error={error} isPending={isPending} />;
+
+  return <DisplayRecipeDetails RecipeDetailsURL={'http://localhost:5000/api/v1/recipes/' + id} />;
 };
 
 export default SingleRecipeDetails;
