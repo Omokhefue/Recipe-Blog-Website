@@ -45,6 +45,7 @@ exports.getRecipeDetails = asyncHandler(async (req, res) => {
 // returns recipes with fields matching the exact input text
 // PUBLIC
 exports.searchRecipe = asyncHandler(async (req, res) => {
+  console.log(1)
   let searchTerm = req.body.searchTerm;
   console.log(searchTerm)
   const recipe = await Recipe.find({
