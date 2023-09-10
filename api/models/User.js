@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema(
   {
     name: {
       //should not be unique as it is a name not username
-      type: [String, 'heyy'],
+      type: String,
       required: [true, "please add a username"],
     },
     image: {

@@ -18,7 +18,7 @@ exports.getLatestRecipes = asyncHandler(async (req, res) => {
 });
 // GET api/vi/recipes/:id
 // SINGLE Recipe
-// PUBLIC
+// PUBLIC done
 exports.getRecipeDetails = asyncHandler(async (req, res) => {
   // Define a route to get a recipe with its category, comments, and likes
   const recipeId = req.params.RecipeId;
@@ -46,6 +46,7 @@ exports.getRecipeDetails = asyncHandler(async (req, res) => {
 // PUBLIC
 exports.searchRecipe = asyncHandler(async (req, res) => {
   let searchTerm = req.body.searchTerm;
+  console.log(searchTerm)
   const recipe = await Recipe.find({
     $text: { $search: searchTerm },
   });
@@ -53,7 +54,7 @@ exports.searchRecipe = asyncHandler(async (req, res) => {
 });
 // GET api/vi/recipes/random
 // RETURN A RANDOM RECIPE
-// PUBLIC
+// PUBLIC done
 exports.getRandomRecipe = asyncHandler(async (req, res) => {
   let count = await Recipe.countDocuments();
 
