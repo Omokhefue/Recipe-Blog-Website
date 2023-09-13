@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Adejumo Temitope",
+    "_id": "64e7d621691bdb61f01c229e",
+    "email": "ade@gmail.com",
+    "password": 123456,
+    "role": "admin"
+  },
+  {
+    "name": "Shining Star",
+    "_id": "64e7d621691bdb61f01c229f",
+    "email": "bola@gmail.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "name": "Mrs Heart",
+    "_id": "64e7d955cff2de5d2c79d432",
+    "email": "heart@gmail.com",
+    "password": 123456,
+    "role": "user"
+  },
+  {
+    "name": "Omowunmi Patience",
+    "_id": "64e7d621691bdb61f01c22a1",
+    "email": "patiencert@gmail.com",
+    "password": 123456,
+    "role": "user"
+  }
+]
