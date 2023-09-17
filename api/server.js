@@ -11,7 +11,7 @@ const categories = require("./routes/category");
 const users = require("./routes/users");
 const likes = require("./routes/likes");
 const comments = require("./routes/comment");
-// const auth = require("./routes/auth");
+const auth = require("./routes/auth");
 const errorHandler = require("./middleware/error");
 const app = express();
 
@@ -27,7 +27,7 @@ app.use("/api/v1/categories", categories);
 app.use("/api/v1/users", users);
 app.use("/api/v1/likes", likes);
 app.use("/api/v1/comments", comments);
-// app.use("/api/v1/auth", auth);
+app.use("/api/v1/auth", auth);
 
 app.use(errorHandler);
 

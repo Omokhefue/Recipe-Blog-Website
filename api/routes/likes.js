@@ -1,13 +1,14 @@
 const express = require("express");
 const {
   addRecipeLike,
-  deleteRecipeLike,
+  // deleteRecipeLike,
   addCommentLike,
-  deleteCommentLike,
+  deleteLike,
 } = require("../controllers/likes");
 const router = express.Router();
 const { protect } = require("../middleware/auth");
 const { checkResourceExists } = require("../middleware/checkResourceExists");
+const { checkAuthorization } = require("../middleware/checkAuthorization");
 
 router.post(
   "/recipe/:RecipeId",
@@ -15,8 +16,18 @@ router.post(
   checkResourceExists("Recipe"),
   addRecipeLike
 );
-router.post("/comment/:CommentId", protect, addCommentLike);
-router.delete("/recipe/:likeId", protect, deleteRecipeLike);
-router.delete("/comment/:likeId", protect, deleteCommentLike);
+router.post(
+  "/comment/:CommentId",
+  protect,
+  checkResourceExists("Comment"),
+  addCommentLike
+);
+router.delete(
+  "/:LikesId",
+  protect,
+  checkResourceExists("Likes"),
+  checkAuthorization,
+  deleteLike
+);
 
 module.exports = router;

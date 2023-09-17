@@ -5,8 +5,7 @@ const Likes = require("../models/Likes");
 const Recipe = require("../models/Recipe");
 const Comment = require("../models/Comment");
 const ErrorResponse = require("../utils/errorResponse");
-
-const sanitizeFilename = require("sanitize-filename");
+const { processImageFile, deleteImage } = require("../utils/imageFileUpload");
 
 // GET api/vi/recipes/latest
 // LIST OF RECENTLY ADDED RECIPES
@@ -46,7 +45,7 @@ exports.getRecipeDetails = asyncHandler(async (req, res) => {
 // PUBLIC done
 exports.searchRecipe = asyncHandler(async (req, res) => {
   let searchTerm = req.body.searchTerm;
-  console.log(searchTerm)
+  console.log(searchTerm);
   const recipe = await Recipe.find({
     $text: { $search: searchTerm },
   });
@@ -56,34 +55,29 @@ exports.searchRecipe = asyncHandler(async (req, res) => {
 // RETURN A RANDOM RECIPE
 // PUBLIC done
 exports.getRandomRecipe = asyncHandler(async (req, res) => {
-  let count = await Recipe.countDocuments();
-
-  // number of recipes to be skipped before recipe to be returned at random
-  let random = Math.floor(Math.random() * count);
-  const recipe = await Recipe.findOne()
-    .skip(random)
-    .populate({ path: "category", select: "name" })
-    .populate({ path: "user", select: "name" })
-    .populate({ path: "likes", select: "user like" })
-    .populate({
+  const recipe = await Recipe.aggregate([
+    { $sample: { size: 1 } }, // Randomly select 1 category
+  ]);
+  await Recipe.populate(recipe, [
+    { path: "category", select: "name" },
+    { path: "category", select: "name" },
+    { path: "user", select: "name" },
+    { path: "likes", select: "user like" },
+    {
       path: "comments",
       select: "text user likes createdAt likesCount",
       populate: {
         path: "user",
-        select: "name", // Select the fields you want from the user object
+        select: "name",
       },
-    });
-  recipe.likesCount = recipe.likes.length;
-  recipe.comments.forEach((comment) => {
-    comment.likesCount = comment.likes.length; // Assuming likes is an array of user IDs
-  });
+    },
+  ]);
   res.status(200).json(recipe);
 });
 //  POST api/vi/recipes/add-recipe
 // ADD A recipe
 // PUBLIC done
 exports.postRecipe = asyncHandler(async (req, res, next) => {
-  let sanitizedImageName;
   const {
     title,
     email,
@@ -92,31 +86,7 @@ exports.postRecipe = asyncHandler(async (req, res, next) => {
     category,
   } = req.body;
 
-  if (!req.files || Object.keys(req.files).length === 0) {
-    throw new ErrorResponse("no image uploaded", 400);
-  }
-  let imageFile = req.files.image;
-
-  const fileExtension = imageFile.name.split(".").pop(); // getting the image extension
-  const allowedExtensions = ["jpg", "jpeg", "png", "gif"]; // types of allowed image types
-
-  // checking if uploaded image file was of the correct format
-  if (!allowedExtensions.includes(fileExtension)) {
-    next(
-      new ErrorResponse(
-        "Invalid file type. Please upload a valid image file (.jpg, .jpeg, .png, .gif).",
-        422
-      )
-    );
-  } else {
-    // generate a unique file name by adding the date beforehand
-    sanitizedImageName = `${Date.now()}_${sanitizeFilename(imageFile.name)}`;
-  }
-
-  let uploadPath = `${__dirname}/../public/images/recipes/${sanitizedImageName}`;
-
-  // move image file to to the public/images folder
-  await imageFile.mv(uploadPath);
+  const sanitizedImageName = await processImageFile(req, res, next, "recipes");
 
   const user = req.user.id;
 
@@ -134,19 +104,34 @@ exports.postRecipe = asyncHandler(async (req, res, next) => {
 
 // done
 exports.deleteRecipe = asyncHandler(async (req, res, next) => {
-  console.log(1)
   const recipeId = req.params.RecipeId;
+  const recipeImage = req.resource.image;
 
+  await deleteImage("users", recipeImage);
   await Recipe.deleteOne({ _id: recipeId });
   return res.status(200).json({ message: "deleted" });
 });
 
 // done but still has consideratios
 exports.updateRecipe = asyncHandler(async (req, res, next) => {
+  const recipe = await Recipe.findById(req.params.RecipeId);
+
+  let sanitizedImageName = recipe.image;
+  if (req.files.image) {
+    sanitizedImageName = await processImageFile(
+      req,
+      res,
+      next,
+      "recipes",
+      sanitizedImageName
+    );
+  }
   const recipeToUpdate = req.resource.id;
 
   const updatedRecipeData = req.body;
-
+  if (sanitizedImageName) {
+    updatedRecipeData.image = sanitizedImageName;
+  }
   if (Object.keys(updatedRecipeData).length === 0) {
     return next(new ErrorResponse("No update data provided", 400));
   }

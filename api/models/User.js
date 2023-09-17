@@ -9,20 +9,21 @@ const Recipe = require("../models/Recipe");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const otpGenerator = require("otp-generator");
+const sendEmail = require("../utils/sendEmail");
 
 const UserSchema = new mongoose.Schema(
   {
     name: {
       //should not be unique as it is a name not username
       type: String,
-      required: [true, "please add a username"],
     },
     image: {
       type: String,
     },
     email: {
       type: String,
-      // required: [true, "Please add an email"],
+      required: [true, "Please add an email"],
       unique: true,
       validate: [isEmail, "Please use a valid URL with HTTP or HTTPS"],
     },
@@ -43,6 +44,13 @@ const UserSchema = new mongoose.Schema(
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
+    verifyEmailOTP: String,
+    verifyEmailOTPExpire: Date,
+    verifiedStatus: {
+      type: Boolean,
+      enum: [true, false],
+      default: false,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -84,6 +92,56 @@ UserSchema.methods.getResetPasswordToken = async function () {
 
   return resetToken;
 };
+UserSchema.methods.getVerifyEmailOTP = async function (email, res) {
+  if (this.verifiedStatus) {
+    throw new ErrorResponse(`user ${this._id} is already verified`);
+  }
+  const otp = otpGenerator.generate(6, {
+    upperCase: false,
+    specialChars: false,
+  });
+
+  this.verifyEmailOTP = otp;
+  this.verifyEmailOTPExpire = Date.now() + 1 * 60 * 1000;
+
+  await this.save({ validateBeforeSave: false });
+
+  const message = `An OTP has been sent to you . \n please input the OTP you recieved into the box below. \n ${otp} `;
+
+  try {
+    await sendEmail({
+      email,
+      subject: "OTP from OmoFoodsAndCo",
+      message,
+    });
+  } catch (err) {
+    this.verifyEmailOTP = undefined;
+    this.verifyEmailOTPExpireExpire = undefined;
+    throw new ErrorResponse("Email could not be sent");
+  }
+};
+
+UserSchema.methods.verifyEmail = async function (user, userEnteredOTP, res) {
+  const currentTime = Date.now();
+  const elapsedTime = currentTime - user.verifyEmailOTPExpire;
+
+  if (
+    elapsedTime <= user.verifyEmailOTPExpire &&
+    user.verifyEmailOTP === userEnteredOTP
+  ) {
+    // OTP is valid and within the timeout window
+    user.verifyEmailOTP = undefined;
+    user.verifyEmailOTPExpire = undefined;
+    user.verifiedStatus = true;
+    await user.save(); // Save changes to the user
+    return res
+      .status(200)
+      .json({ success: true, message: "OTP verified successfully" });
+  } else {
+    // OTP is either expired or incorrect
+    throw new ErrorResponse("Invalid Token", 400);
+  }
+};
 
 UserSchema.statics.login = async function (email, password, next) {
   if (!email || !password) {
@@ -95,7 +153,7 @@ UserSchema.statics.login = async function (email, password, next) {
     throw new ErrorResponse("Invalid Credentials", 401);
   }
 
-  const auth = await bcrypt.compare(password, user.password);
+  const auth = bcrypt.compare(password, user.password);
 
   if (auth) {
     return user;

@@ -10,6 +10,10 @@ const RecipeSchema = new mongoose.Schema(
       type: String,
       required: [true, "please add the title of the recipe"],
     },
+    image: {
+      type: String,
+      required: [true, "please add the image of the recipe"],
+    },
     instructions: {
       type: Array,
       required: [true, "fill in at least one instruction for the recipe"],
@@ -66,4 +70,25 @@ RecipeSchema.pre("deleteOne", async function (next) {
   await mongoose.model("Likes").deleteMany({ author: recipeId });
   next();
 });
+
+RecipeSchema.pre("deleteMany", async function (next) {
+  const recipeId = this.getQuery()["_id"];
+  await mongoose.model("Comment").deleteMany({ recipe: recipeId });
+  await mongoose.model("Likes").deleteMany({ parent: recipeId });
+  next();
+});
+
+RecipeSchema.pre("deleteMany", async function (next) {
+  const query = this.getFilter();
+
+  const recipesToDelete = await this.model.find(query).select("_id");
+
+  const recipeIdsToDelete = recipesToDelete.map((recipe) => recipe._id);
+
+  recipeIdsToDelete.forEach(async (recipe) => {
+    await mongoose.model("Comment").deleteMany({ recipe: recipe });
+    await mongoose.model("Likes").deleteMany({ parent: recipe });
+  });
+});
+
 module.exports = mongoose.model("Recipe", RecipeSchema);

@@ -16,16 +16,18 @@ const CommentSchema = new mongoose.Schema(
       ref: "Recipe",
       required: true,
     },
-    likes: [
-      {
-        ref: "Likes",
-        type: mongoose.Schema.Types.ObjectId,
-      },
-    ],
     likesCount: Number,
   },
   { timestamps: true }
 );
+
+
+
+CommentSchema.virtual("likes", {
+  ref: "Likes", // Reference to the Likes model
+  localField: "_id", // The field in the Recipe model that contains the reference
+  foreignField: "parent", // The field in the Likes model to match against
+});
 
 CommentSchema.pre("deleteOne", async function (next) {
   const commentId = this.getQuery()["_id"];
@@ -36,4 +38,3 @@ CommentSchema.pre("deleteOne", async function (next) {
 });
 
 module.exports = mongoose.model("Comment", CommentSchema);
-// mongoose.models.comments || mongoose.model("Comment", CommentSchema);

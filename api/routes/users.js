@@ -2,35 +2,38 @@ const express = require("express");
 const {
   getAllUsers,
   getUser,
-  userLogin,
-  userSignUp,
   getLoggedIn,
-  forgotPassword,
-  resetPassword,
-  updateDetails,
   updatePassword,
   deleteUser,
+  updateDetails,
 } = require("../controllers/users");
 
 const { protect } = require("../middleware/auth");
 const { checkResourceExists } = require("../middleware/checkResourceExists");
-const { checkAuthorization } = require("../middleware/checkAuthorisation");
+const { checkAuthorization } = require("../middleware/checkAuthorization");
 
 const router = express.Router();
 
 router.get("/", getAllUsers);
 router.get("/current-user", protect, getLoggedIn);
 router.get("/:UserId", checkResourceExists("User"), getUser);
-router.post("/signup", userSignUp);
-router.post("/login", userLogin);
-router.put("/updatedetails", protect, updateDetails);
-router.put("/updatepassword", protect, updatePassword);
-router.post("/forgot-password", protect, forgotPassword);
-router.post("/reset-password/:resetToken", protect, resetPassword);
+router.put(
+  "/updatedetails/:UserId",
+  protect,
+  checkResourceExists("User"),
+  updateDetails
+);
+router.put(
+  "/updatepassword/:UserId",
+  protect,
+  checkResourceExists("User"),
+  updatePassword
+);
 router.delete(
   "/:UserId",
   protect,
-  checkResourceExists('User'),
+  checkResourceExists("User"),
+  checkAuthorization,
   deleteUser
 );
 

@@ -41,7 +41,7 @@
     ],
     "email": "adejumot77@gmail.com",
     "category": "64e76e10790b1b6c5c132790",
-    "image": "linguine.jpg",
+    "image": "1692466811846_kids-3171905_1280.png",
     "user": "64e7d621691bdb61f01c229e",
     "_id": "64e7edcc6b3dcd65d2140ad1"
   },
@@ -71,7 +71,7 @@
     ],
     "email": "example@example.com",
     "category": "64e76e10790b1b6c5c132790",
-    "image": "lasagna.jpg",
+    "image": "1692466811845_kids-3171905_1280.png",
     "user": "64e7d621691bdb61f01c229e",
     "_id": "64e7edcc6b3dcd65d2140ad3"
   },
@@ -103,7 +103,7 @@
     ],
     "email": "example@example.com",
     "category": "64e76e10790b1b6c5c13278c",
-    "image": "jollof_rice.jpg",
+    "image": "1692466811844_kids-3171905_1280.png",
     "_id": "64e7edcc6b3dcd65d2140ad5",
     "user": "64e7d621691bdb61f01c229e"
   },
@@ -138,7 +138,7 @@
     "email": "example@example.com",
     "category": "64e76e10790b1b6c5c13278d",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "orange_chicken.jpg",
+    "image": "1692466811843_kids-3171905_1280.png",
     "_id": "64e7edcc6b3dcd65d2140ad7"
   },
   {
@@ -165,7 +165,7 @@
     "email": "example@example.com",
     "category": "64e76e10790b1b6c5c13278e",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "ugali_sukuma_wiki.jpg",
+    "image": "1692466811842_kids-3171905_1280.png",
     "_id": "64e7edcc6b3dcd65d2140ad8"
   },
   {
@@ -192,7 +192,7 @@
     "category": "64e76e10790b1b6c5c13278f",
     "_id": "64e7edcc6b3dcd65d2140ad6",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "kelewele.jpg"
+    "image": "1692466811849_kids-3171905_1280.png"
   },
   {
     "title": "Tom Yum Soup",
@@ -212,7 +212,7 @@
     ],
     "category": "64e76e10790b1b6c5c13278b",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "tom-yum-soup.jpg",
+    "image": "1692466811841_kids-3171905_1280.png",
     "_id": "64e7edcc6b3dcd65d2140ad2"
   }
 ]

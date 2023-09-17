@@ -1,9 +1,9 @@
 const ErrorResponse = require("../utils/errorResponse");
 const errorHandler = (err, req, res, next) => {
   let error = { ...err };
-  // console.log(err);
+  console.log(err);
   error.message = err.message;
-  // validation error
+  // validation error on save
   if (err.name === "ValidationError") {
     const message = Object.values(err.errors).map((err) => err.message);
 

@@ -1,15 +1,40 @@
 const express = require("express");
 const {
-  getCategories,
   getAllCategories,
   getRecipesByCategory,
+  getCategoriesForHomepage,
+  addCategory,
+  updateCategory,
+  deleteCategory,
 } = require("../controllers/category");
 const router = express.Router();
-const { protect } = require("../middleware/auth");
+const { protect, authorize } = require("../middleware/auth");
+const { checkResourceExists } = require("../middleware/checkResourceExists");
+const { checkAuthorization } = require("../middleware/checkAuthorization");
 
-router.get("/", protect, getCategories);
-router.get("/categories", protect, getAllCategories);
-router.get("/:id", protect, getRecipesByCategory);
+router.get("/", getAllCategories);
+router.get("/homepage", getCategoriesForHomepage);
+router.get(
+  "/:CategoryId",
+  checkResourceExists("Category"),
+  getRecipesByCategory
+);
+router.post("/", protect, authorize("admin"), addCategory);
+router.put(
+  "/:CategoryId",
+  protect,
+  authorize("admin"),
+  checkResourceExists("Category"),
+  checkAuthorization,
+  updateCategory
+);
+router.delete(
+  "/:CategoryId",
+  protect,
+  authorize("admin"),
+  checkResourceExists("Category"),
+  checkAuthorization,
+  deleteCategory
+);
 
-// add route to add categories. only for the admin
 module.exports = router;

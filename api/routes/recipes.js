@@ -9,9 +9,9 @@ const {
   updateRecipe,
 } = require("../controllers/recipes");
 const router = express.Router();
-const { protect, authorize } = require("../middleware/auth");
+const { protect} = require("../middleware/auth");
 const { checkResourceExists } = require("../middleware/checkResourceExists");
-const { checkAuthorization } = require("../middleware/checkAuthorisation");
+const { checkAuthorization } = require("../middleware/checkAuthorization");
 
 router.get("/latest", getLatestRecipes);
 router.get("/random", getRandomRecipe);

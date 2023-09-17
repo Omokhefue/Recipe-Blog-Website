@@ -31,6 +31,7 @@ exports.checkResourceExists = (resourceType) => {
       );
     }
     const resource = await Model.findOne({ _id: resourceId }); // Replace with your resource lookup logic
+
     if (!resource) {
       return next(new ErrorResponse(`${resourceType} not found`, 404));
     }

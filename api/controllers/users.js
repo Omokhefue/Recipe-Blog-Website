@@ -4,110 +4,65 @@
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
 const asyncHandler = require("../middleware/async");
-const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
+const { processImageFile, deleteImage } = require("../utils/imageFileUpload");
 
-// done
-exports.userSignUp = asyncHandler(async (req, res, next) => {
-  const { name, image, email, password } = req.body;
-  const user = await User.create({ name, image, email, password });
-
-  sendTokenResponse(user, 200, res);
-});
-// done
-exports.userLogin = asyncHandler(async (req, res, next) => {
-  const { email, password } = req.body;
-  const user = await User.login(email, password, next);
-
-  sendTokenResponse(user, 200, res);
-});
-// done
-exports.forgotPassword = asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({ email: req.body.email });
-
-  if (!user) {
-    return next(new ErrorResponse("there is no user with that email", 404));
-  }
-
-  const resetToken = await user.getResetPasswordToken();
-
-  await user.save({ validateBeforeSave: false });
-
-  // create reset url
-  const resetURL = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/users/reset-password/${resetToken}`;
-
-  const message = `You are receiving this email because you need to confirm your email address. Please make a GET request to: \n\n ${resetURL}`;
-
-  try {
-    await sendEmail({
-      email: user.email,
-      subject: "Password reset token",
-      message,
-    });
-  } catch (err) {
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpire = undefined;
-
-    await user.save({ validateBeforeSave: false });
-    return next(new ErrorResponse("Email could not be sent"));
-  }
-  res.status(201).json({
-    success: true,
-    message: "email sent",
-    resetToken,
-  });
-});
-// done
-exports.resetPassword = asyncHandler(async (req, res, next) => {
-  // get hashed token
-  const resetPasswordToken = crypto
-    .createHash("sha256")
-    .update(req.params.resetToken)
-    .digest("hex");
-
-  const user = await User.findOne({
-    resetPasswordToken,
-    resetPasswordExpire: { $gt: Date.now() },
-  });
-
-  if (!user) {
-    return next(new ErrorResponse("Invalid token", 400));
-  }
-
-  // set the new password
-  user.password = req.body.password;
-  user.resetPasswordToken = undefined;
-  user.resetPasswordExpire = undefined;
-
-  await user.save();
-
-  sendTokenResponse(user, 200, res);
-});
 // done
 exports.updateDetails = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.params.UserId);
+
   const name = req.body.name;
   const email = req.body.email;
-  if (!name && !email && req.files ) {
-    return next(new ErrorResponse("no update details provided", 404));
-  }
-  const fieldsToUpdate = { name, email, image };
 
-  const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
-    new: true,
-    runValidators: true,
-  });
+  if (!name && !email && !req.files) {
+    return next(new ErrorResponse("No update details provided", 400));
+  }
+
+  let sanitizedImageName = user.image;
+  if (req.files && req.files.image) {
+    sanitizedImageName = await processImageFile(
+      req,
+      res,
+      next,
+      "users",
+      sanitizedImageName
+    );
+  }
+
+  // Construct fields to update
+  const fieldsToUpdate = {};
+  if (name) fieldsToUpdate.name = name;
+  if (email && email !== user.email) fieldsToUpdate.email = email;
+  if (sanitizedImageName) fieldsToUpdate.image = sanitizedImageName;
+
+  const updatedUser = await User.findByIdAndUpdate(
+    req.user.id,
+    fieldsToUpdate,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   res.status(200).json({
     success: true,
-    data: user,
+    data: updatedUser,
   });
 });
+
 // done
 exports.updatePassword = asyncHandler(async (req, res, next) => {
-  const user = await User.findById(req.user.id).select("+password");
+  const user = await User.findById(req.params.UserId).select("+password");
+
+  if (user.id !== req.user.id) {
+    return next(
+      new ErrorResponse(
+        `User ${req.user._id} is not authorized to make changes to resource ${user._id}`,
+        403
+      )
+    );
+  }
 
   // Check current password
   const auth = await bcrypt.compare(req.body.currentPassword, user.password);
@@ -123,60 +78,11 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
 });
 // done
 exports.getLoggedIn = asyncHandler(async (req, res, next) => {
-  console.log(3);
-
   const user = await User.findById(req.user.id).populate({
     path: "recipes",
     select: "title",
   });
   res.status(200).json({ userMe: user });
-});
-
-exports.logout = asyncHandler(async (req, res, next) => {
-  res.cookie("token", "none", {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true,
-  });
-
-  res.status(200).json({
-    success: true,
-    data: {},
-  });
-});
-
-exports.confirmEmail = asyncHandler(async (req, res, next) => {
-  // grab token from email
-  const { token } = req.query;
-
-  if (!token) {
-    return next(new ErrorResponse("Invalid Token", 400));
-  }
-
-  const splitToken = token.split(".")[0];
-  const confirmEmailToken = crypto
-    .createHash("sha256")
-    .update(splitToken)
-    .digest("hex");
-
-  // get user by token
-  const user = await User.findOne({
-    confirmEmailToken,
-    isEmailConfirmed: false,
-  });
-
-  if (!user) {
-    return next(new ErrorResponse("Invalid Token", 400));
-  }
-
-  // update confirmed to true
-  user.confirmEmailToken = undefined;
-  user.isEmailConfirmed = true;
-
-  // save
-  user.save({ validateBeforeSave: false });
-
-  // return token
-  sendTokenResponse(user, 200, res);
 });
 
 // done
@@ -190,7 +96,6 @@ exports.getAllUsers = asyncHandler(async (req, res, next) => {
 });
 // done
 exports.getUser = asyncHandler(async (req, res, next) => {
-  console.log("enter");
   const userId = req.params.UserId;
 
   const user = await User.findById(userId).populate({
@@ -203,7 +108,6 @@ exports.getUser = asyncHandler(async (req, res, next) => {
 
 // done
 exports.deleteUser = asyncHandler(async (req, res, next) => {
-  console.log(req.user, req.params.UserId);
   if (req.user.id.toString() !== req.params.UserId) {
     return next(
       new ErrorResponse(
@@ -214,9 +118,12 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
   }
   const userId = req.params.UserId;
 
+  const userImage = req.resource.image;
+
+  await deleteImage("users", userImage);
+
   await User.deleteOne({ _id: userId });
   res.status(200).json({ success: true, msg: "deleted" });
-  // console.log("delete?");
 });
 
 // get token from model, create cookie and send response
@@ -230,12 +137,10 @@ const sendTokenResponse = async (user, statusCode, res) => {
     httpOnly: true,
   };
 
-  // if (process.env.NODE_ENV === "production") {
-  //   options.secure = true
-  // }
-  res.status(statusCode).cookie("jwt", token, options).json({
+  res.status(statusCode).json({
     success: true,
     token,
     user: user._id,
   });
 };
+

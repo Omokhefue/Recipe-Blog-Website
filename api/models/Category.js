@@ -11,6 +11,11 @@ const CategorySchema = new mongoose.Schema(
       required: [true, "please upload an image for the category"],
       unique: true,
     },
+    user: {
+      ref: "User",
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -24,6 +29,11 @@ CategorySchema.virtual("recipes", {
   ref: "Recipe",
   localField: "_id",
   foreignField: "category",
+});
+
+CategorySchema.pre("deleteOne", async function (next) {
+  const categoryId = this.getQuery()["_id"];
+  await mongoose.model("Recipe").deleteMany({ category: categoryId });
 });
 
 module.exports = mongoose.model("Category", CategorySchema);
