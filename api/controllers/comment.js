@@ -1,31 +1,42 @@
-// get all comments under a recipe - only show 10 at first
 const Comment = require("../models/Comment");
-const User = require("../models/User");
+require("../models/User");
 const asyncHandler = require("../middleware/async");
-const ErrorResponse = require("../utils/errorResponse");
 
+// POST api/v1/comments/
+// Add a new comment to a recipe.
+// PRIVATE
 exports.addComment = asyncHandler(async (req, res, next) => {
-  let { text, user, recipe } = req.body; // no likes and likesCount is sent from the frontend because there cannot be any like as the comment is just being create
+  // Extract comment data from the request body
+  let { text, user, recipe } = req.body;
 
+  // Create a new comment in the database
   let comment = await Comment.create({
     text,
     user,
     recipe,
   });
-  await comment.populate({ path: "user", select: "name" }); //add name of author to the comment being sent back
 
+  // Populate the 'user' field of the comment with the 'name' property for the author
+  await comment.populate({ path: "user", select: "name" });
+
+  // Respond with the created comment, including the author's name
   res.status(200).json({
     comment: comment,
   });
 });
 
+// POST apI/v1/comments//:CommentId
+// Delete a comment by its ID.
+// PRIVATE
 exports.deleteComment = asyncHandler(async (req, res, next) => {
+  // Get the comment ID from the request parameters
   const commentId = req.params.CommentId;
 
- await Comment.deleteOne({ _id: commentId });
+  // Delete the comment from the database based on its ID
+  await Comment.deleteOne({ _id: commentId });
 
+  // Respond with a success message indicating that the comment has been deleted
   return res.status(200).json({
-    success: "deleted",
+    success: "Comment deleted",
   });
 });
-

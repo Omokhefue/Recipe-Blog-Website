@@ -1,7 +1,6 @@
 const express = require("express");
 const {
   addRecipeLike,
-  // deleteRecipeLike,
   addCommentLike,
   deleteLike,
 } = require("../controllers/likes");
