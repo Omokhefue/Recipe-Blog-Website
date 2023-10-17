@@ -52,13 +52,13 @@ exports.getRecipeDetails = asyncHandler(async (req, res) => {
     .sort({ createdAt: -1 }); // Sort the comments by 'createdAt' in descending order
 
   // Calculate the total number of likes for the recipe
-  recipe.likesCount = recipe.likes.length;
+  recipe.likesCount = recipe.likes.length || 0;
 
   // Calculate the likes count for each comment
   recipe.comments.forEach((comment) => {
-    comment.likesCount = comment.likes.length; // Assuming 'likes' is an array of user IDs
+    comment.likesCount = comment.likes?.length || 0; // Assuming 'likes' is an array of user IDs
   });
-
+console.log(recipe);
   // Respond with the detailed recipe information
   res.status(200).json(recipe);
 });

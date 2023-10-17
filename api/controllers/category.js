@@ -44,7 +44,7 @@ exports.getRecipesByCategory = asyncHandler(async (req, res) => {
 
   // Extract the recipes associated with the category
   const recipes = recipeByCategory.recipes;
-
+  console.log(recipes);
   // Send the recipes as a JSON response
   res.status(200).json({ recipes });
 });

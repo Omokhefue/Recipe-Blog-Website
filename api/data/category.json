@@ -3,36 +3,36 @@
     "name": "Thai",
     "_id": "64e76e10790b1b6c5c13278b",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "1692466811841_kids-3171905_1280.png"
+    "image": "images/category/thai.jpeg"
   },
   {
     "name": "Nigerian",
     "_id": "64e76e10790b1b6c5c13278c",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "1692466811842_kids-3171905_1280.png"
+    "image": "images/category/nigerian.jpeg"
   },
   {
     "name": "Chinese",
     "_id": "64e76e10790b1b6c5c13278d",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "1692466811843_kids-3171905_1280.png"
+    "image": "images/category/chinese.jpeg"
   },
   {
     "name": "Kenyan",
     "_id": "64e76e10790b1b6c5c13278e",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "1692466811844_kids-3171905_1280.png"
+    "image": "images/category/kenyan.jpeg"
   },
   {
     "name": "Ghanaian",
     "_id": "64e76e10790b1b6c5c13278f",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "1692466811845_kids-3171905_1280.png"
+    "image": "images/category/ghanaian.jpeg"
   },
   {
     "name": "Italian",
     "_id": "64e76e10790b1b6c5c132790",
     "user": "64e7d621691bdb61f01c229e",
-    "image": "1692466811846_kids-3171905_1280.png"
+    "image": "images/category/italian.jpeg"
   }
 ]
