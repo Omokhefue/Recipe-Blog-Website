@@ -40,25 +40,10 @@ exports.getRecipeDetails = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(recipeId)
     .populate({ path: "category", select: "name" }) // Populate the category field with 'name'
     .populate({ path: "user", select: "name" }) // Populate the user field with 'name'
-    .populate({ path: "likes", select: "user like" }) // Populate the likes field with 'user' and 'like'
-    .populate({
-      path: "comments", // Populate the comments field
-      select: "text user likes createdAt likesCount", // Select specific fields from comments
-      populate: {
-        path: "user", // Populate the user field of comments
-        select: "name", // Select the 'name' field of the user
-      },
-    })
-    .sort({ createdAt: -1 }); // Sort the comments by 'createdAt' in descending order
+    .populate({ path: "likes", select: "like" }); // Populate the likes field with 'user' and 'like'
 
-  // Calculate the total number of likes for the recipe
   recipe.likesCount = recipe.likes.length || 0;
 
-  // Calculate the likes count for each comment
-  recipe.comments.forEach((comment) => {
-    comment.likesCount = comment.likes?.length || 0; // Assuming 'likes' is an array of user IDs
-  });
-console.log(recipe);
   // Respond with the detailed recipe information
   res.status(200).json(recipe);
 });

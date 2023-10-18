@@ -40,3 +40,17 @@ exports.deleteComment = asyncHandler(async (req, res, next) => {
     success: "Comment deleted",
   });
 });
+exports.getComments = asyncHandler(async (req, res, next) => {
+  const recipeId = req.params.RecipeId;
+
+  // Fetch comments and populate the 'likes' field
+  const comments = await Comment.find({ recipe: recipeId }).populate("likes");
+
+  // Calculate 'likesCount' for each comment
+  comments.forEach((comment) => {
+    comment.likesCount = comment.likes?.length || 0;
+  });
+  console.log(comments);
+
+  res.status(200).json({ comments });
+});
