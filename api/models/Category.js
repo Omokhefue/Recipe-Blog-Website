@@ -20,8 +20,8 @@ const CategorySchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
+     timestamps: true 
   },
-  { timestamps: true }
 );
 
 // Define a virtual to retrieve recipes related to this category

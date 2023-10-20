@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 
 const LikesSchema = new mongoose.Schema(
   {
-    like: {
-      type: Boolean,
-      enum: [true],
-    },
     user: {
       ref: "User",
       type: mongoose.Schema.Types.ObjectId,

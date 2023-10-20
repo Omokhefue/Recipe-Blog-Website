@@ -41,8 +41,8 @@ const RecipeSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
+     timestamps: true 
   },
-  { timestamps: true }
 );
 
 // when the search fetaure is invoked, it will look for the search value in any of these fields

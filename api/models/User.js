@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      // required: [true, "password is required"],
+      required: [true, "password is required"],
       minlength: [6, "password should be at least 6 characters"],
       select: false,
     },
@@ -55,8 +55,8 @@ const UserSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
+     timestamps: true 
   },
-  { timestamps: true }
 );
 
 UserSchema.virtual("recipes", {

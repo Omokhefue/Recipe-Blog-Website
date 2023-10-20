@@ -1,5 +1,9 @@
 const express = require("express");
-const { addComment, deleteComment } = require("../controllers/comment");
+const {
+  addComment,
+  deleteComment,
+  getComments,
+} = require("../controllers/comment");
 const router = express.Router();
 const { protect } = require("../middleware/auth");
 const { checkResourceExists } = require("../middleware/checkResourceExists");
@@ -13,5 +17,5 @@ router.delete(
   checkAuthorization,
   deleteComment
 );
-
+router.get("/:RecipeId", getComments);
 module.exports = router;
