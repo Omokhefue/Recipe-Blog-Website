@@ -55,8 +55,6 @@ exports.searchRecipe = asyncHandler(async (req, res) => {
   // Extract the search term from the request body
   let searchTerm = req.body.searchTerm;
 
-  // Output the search term to the console for debugging
-  console.log(searchTerm);
 
   // Use MongoDB's text search to find recipes that match the search term
   const recipe = await Recipe.find({
