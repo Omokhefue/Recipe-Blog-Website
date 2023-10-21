@@ -14,8 +14,8 @@ exports.addRecipeLike = asyncHandler((req, res, next) => {
   const parentType = "Recipe"; // The type of the parent resource
   const user = req.user.id; // The user performing the like action
 
-  // Call the addLike function to handle the like operation
-  addLike(req, res, next, parent, parentType, user);
+  // Call the addRemoveLike function to handle the like operation
+  addRemoveLike(req, res, next, parent, parentType, user);
 });
 
 // POST api/v1/likes/comment/:CommentId
@@ -27,8 +27,8 @@ exports.addCommentLike = asyncHandler((req, res, next) => {
   const parentType = "Comment"; // The type of the parent resource
   const user = req.user.id; // The user performing the like action
 
-  // Call the addLike function to handle the like operation
-  addLike(req, res, next, parent, parentType, user);
+  // Call the addRemoveLike function to handle the like operation
+  addRemoveLike(req, res, next, parent, parentType, user);
 });
 
 // DELETE api/v1/likes/:LikesId
@@ -51,35 +51,31 @@ exports.deleteLike = asyncHandler(async (req, res, next) => {
 });
 
 // Add a like to a parent resource (recipe or comment).
-async function addLike(req, res, next, parent, parentType, user) {
-  // Extract the 'like' data from the request body
+async function addRemoveLike(req, res, next, parent, parentType, user) {
+  let numberOfLikes;
 
   const { like } = req.body;
 
-  // Populate the 'likes' field of the parent resource with 'user' data
   await parent.populate({
     path: "likes",
     select: "user",
   });
 
   // Check if the user has already liked the parent resource
-  for (const existingLike of parent.likes) {
-    if (existingLike.user.toString() === user) {
-      return next(
-        new ErrorResponse(
-          `User ${req.user._id} cannot like ${parent._id} twice`,
-          403
-        )
-      );
-    }
+  const userHasLiked = parent.likes.some(
+    (existingLike) => existingLike.user.toString() === user
+  );
+
+  if (userHasLiked) {
+    // User has already liked, so remove the like
+    await Likes.deleteOne({ user, parent, parentType });
+    numberOfLikes = parent.likes.length - 1;
+  } else {
+    // User has not liked, so add the like
+    await Likes.create({ like, parentType, parent, user });
+    numberOfLikes = parent.likes.length + 1;
   }
 
-  // Create a new like in the database
-  const newLike = await Likes.create({ like, parentType, parent, user });
-
-  // Calculate the updated number of likes for the parent resource
-  const numberOfLikes = Number(parent.likes.length) + 1;
-
-  // Respond with the updated number of likes and the ID of the new like
-  res.status(200).json({ likes: numberOfLikes, likeId: newLike._id });
+  return res.status(200).json({ likes: numberOfLikes, parentId: parent._id });
 }
+
