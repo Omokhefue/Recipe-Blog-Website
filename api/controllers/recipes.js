@@ -18,7 +18,7 @@ exports.getLatestRecipes = asyncHandler(async (req, res) => {
 // GET api/vi/recipes/:id
 // SINGLE Recipe
 // PUBLIC done
-exports.getLatestRecipes = asyncHandler(async (req, res) => {
+exports.getAllRecipes = asyncHandler(async (req, res) => {
   // Define the number of latest recipes to retrieve
   const limit = 6;
 
@@ -27,6 +27,11 @@ exports.getLatestRecipes = asyncHandler(async (req, res) => {
 
   // Respond with the latest recipes
   res.status(200).json(latest);
+  // const limit = 6;
+
+  // const latest = await Recipe.find().sort({ createdAt: -1 }).limit(limit);
+
+  // res.status(200).json(latest);
 });
 
 // GET api/v1/recipe//:RecipeId
@@ -70,7 +75,7 @@ exports.searchRecipe = asyncHandler(async (req, res) => {
 
 exports.getRandomRecipe = asyncHandler(async (req, res) => {
   // Use the MongoDB aggregate framework to select a random recipe (size: 1)
-  const recipe = await Recipe.aggregate([{ $sample: { size: 1 } }]);
+  const recipe = await Recipe.aggregate([{ $sample: { size: 6 } }]);
 
   // Populate the selected recipe with related data using multiple populate calls
   await Recipe.populate(recipe, [
@@ -100,13 +105,13 @@ exports.postRecipe = asyncHandler(async (req, res, next) => {
   const {
     title,
     email,
-    instructionsArray: instructions,
-    ingredientsArray: ingredients,
+    instructions,
+    ingredients,
     category,
   } = req.body;
 
   // Process and sanitize the uploaded image, storing it as sanitizedImageName
-  const sanitizedImageName = await processImageFile(req, res, next, "recipes");
+  const sanitizedImageName = await processImageFile(req, res, next, "recipe");
 
   // Extract the user ID from the authenticated user's request
   const user = req.user.id;
@@ -137,7 +142,7 @@ exports.deleteRecipe = asyncHandler(async (req, res, next) => {
   const recipeImage = req.resource.image;
 
   // Delete the image associated with the recipe (assuming the deleteImage function handles this)
-  await deleteImage("users", recipeImage);
+  await deleteImage("recipe", recipeImage);
 
   // Delete the recipe from the database based on its ID
   await Recipe.deleteOne({ _id: recipeId });
